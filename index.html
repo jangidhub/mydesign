@@ -484,7 +484,7 @@
                     <a href="#" id="a1">HOME</a>
                     <a href="#" >PRODUCT</a>
                     <a href="#" id="a2">SERVICE</a>
-                    <a href="counter.html" target="_blank" id="a3">ABOUT</a>
+                    <button><a href="counter.html" target="_blank" id="a3">ABOUT</a>
                 </div>
             </div>
         </nav>
@@ -628,7 +628,6 @@
         // Smooth scrolling for navigation links
         document.querySelectorAll('.sidebar a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
                 sidebar.classList.remove("active");
             });
         });
