@@ -3,94 +3,585 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <title>Sudhanshu Jangid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            background-color: #000000 !important;
+            color: #f5f5f7;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            overflow-x: hidden;
+        }
 
-    <title>HOME</title>
+        html {
+            background-color: #000000 !important;
+            scroll-behavior: smooth;
+        }
 
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 52px;
+        }
+
+        .nav-logo {
+            font-size: 17px;
+            font-weight: 600;
+            color: #f5f5f7;
+            text-decoration: none;
+            letter-spacing: -0.022em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #f5f5f7;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            max-width: 1024px;
+            margin: 0 auto;
+            padding-left: 22px;
+            padding-right: 22px;
+        }
+
+        .hero-headline {
+            font-size: clamp(32px, 7vw, 80px);
+            line-height: 1.05;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            margin-bottom: 24px;
+            color: #f5f5f7 !important;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subline {
+            font-size: clamp(19px, 3vw, 28px);
+            line-height: 1.14286;
+            font-weight: 400;
+            color: #f5f5f7;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 17px;
+            line-height: 1.47059;
+            color: #a1a1a6;
+            max-width: 734px;
+            margin: 0 auto 48px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #0071e3;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 23px;
+            border-radius: 980px;
+            font-size: 17px;
+            line-height: 1.23536;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            background: #0077ed;
+            transform: scale(1.02);
+        }
+
+        /* Section Styling */
+        .section {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 80px 22px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-eyebrow {
+            font-size: 21px;
+            line-height: 1.19048;
+            font-weight: 600;
+            color: #0071e3;
+            margin-bottom: 8px;
+        }
+
+        .section-headline {
+            font-size: clamp(32px, 6vw, 56px);
+            line-height: 1.07143;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            color: #f5f5f7 !important;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .skill-card {
+            text-align: left;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s ease;
+        }
+
+        .skill-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-icon {
+            font-size: 56px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .skill-title {
+            font-size: 28px;
+            line-height: 1.14286;
+            font-weight: 600;
+            color: #f5f5f7;
+            margin-bottom: 16px;
+            letter-spacing: -0.003em;
+        }
+
+        .skill-description {
+            font-size: 17px;
+            line-height: 1.47059;
+            color: #a1a1a6;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background: #161617;
+            border-radius: 30px;
+            margin: 80px 0;
+            overflow: hidden;
+        }
+
+        .projects-content {
+            padding: 80px 22px;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .project-title {
+            font-size: 19px;
+            line-height: 1.21053;
+            font-weight: 600;
+            color: #f5f5f7;
+            margin-bottom: 12px;
+        }
+
+        .project-description {
+            font-size: 17px;
+            line-height: 1.47059;
+            color: #a1a1a6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 120px 22px;
+            max-width: 734px;
+            margin: 0 auto;
+        }
+
+        .contact-headline {
+            font-size: clamp(32px, 6vw, 48px);
+            line-height: 1.08349;
+            font-weight: 600;
+            color: #f5f5f7;
+            margin-bottom: 24px;
+            letter-spacing: -0.003em;
+        }
+
+        .contact-description {
+            font-size: 21px;
+            line-height: 1.19048;
+            color: #a1a1a6;
+            margin-bottom: 48px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #0071e3;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #0077ed;
+            text-decoration: underline;
+        }
+
+        .quote {
+            font-size: 28px;
+            line-height: 1.14286;
+            font-weight: 600;
+            color: #f5f5f7;
+            font-style: italic;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .quote.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .footer {
+            background: #161617;
+            padding: 40px 22px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            font-size: 12px;
+            color: #86868b;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 734px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding-top: 80px;
+            }
+            
+            .section {
+                padding: 60px 22px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 428px) {
+            .nav-content {
+                padding: 0 16px;
+            }
+            
+            .hero, .section, .projects-content, .contact-section {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+        }
+
+        /* Smooth scrolling */
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">Sudhanshu Jangid</a>
+            <ul class="nav-links">
+                <li><a href="#skills">What I Do</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Connect</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div id="effectMouse"></div>
-    <div id="effecMouse"></div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-headline">Welcome to My World</h1>
+        <p class="hero-subline">Turning Ideas into Reality with Code, Creativity & Vision</p>
+        <p class="hero-description">
+            Hi, I'm Sudhanshu Jangid, a passionate tech enthusiast, student, and aspiring innovator from Jodhpur, Rajasthan. I'm currently pursuing a Bachelor of Computer Applications (BCA) at G.D. Memorial College and dreaming big — from futuristic AI assistants like JARVIS to smart gadgets and gesture-controlled systems.
+        </p>
+        <a href="#contact" class="cta-button">Get in touch</a>
+    </section>
 
-    <section class="b-container">
-        <nav class="header">
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="section-header fade-in">
+            <div class="section-eyebrow">Expertise</div>
+            <h2 class="section-headline">What I Do</h2>
+        </div>
         
-            <div id="container">
-                <a class="nav_side_button" id="Toggle" ><img class="logo" src="images/pngwing.com ship while.png"></a>
-                <!--  sidebar ancher tags -->
-                <div class="sidebar" id="sidebar">
-                    <a href="#" id="a1">HOME</a>
-                    <a href="#" >PRODUCT</a>
-                    <a href="#" id="a2">SERVICE</a>
-                    <a href="#" id="a3">ABOUT</a>
-                    
+        <div class="skills-grid">
+            <div class="skill-card">
+                <span class="skill-icon">🧠</span>
+                <h3 class="skill-title">AI/ML + Voice Tech</h3>
+                <p class="skill-description">Building voice-based assistants and JARVIS-style systems that understand and respond to natural language with precision and intelligence.</p>
+            </div>
+            
+            <div class="skill-card">
+                <span class="skill-icon">✋</span>
+                <h3 class="skill-title">Gesture Control & Vision AI</h3>
+                <p class="skill-description">Developing intuitive webcam-based hand gesture systems using advanced tools like MediaPipe for seamless human-computer interaction.</p>
+            </div>
+            
+            <div class="skill-card">
+                <span class="skill-icon">🧰</span>
+                <h3 class="skill-title">DIY & Hardware Projects</h3>
+                <p class="skill-description">Integrating cutting-edge technology into real-world objects, creating smart glasses, intelligent vehicles, and innovative IoT solutions.</p>
+            </div>
+            
+            <div class="skill-card">
+                <span class="skill-icon">📱</span>
+                <h3 class="skill-title">Mobile & Web Development</h3>
+                <p class="skill-description">Crafting custom applications and responsive web experiences with modern frameworks and thoughtful user interface design.</p>
+            </div>
+            
+            <div class="skill-card">
+                <span class="skill-icon">🧪</span>
+                <h3 class="skill-title">Innovation & Research</h3>
+                <p class="skill-description">Constantly experimenting with emerging technologies, pushing boundaries, and building tomorrow's solutions today.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="projects-content">
+            <div class="section-header fade-in">
+                <div class="section-eyebrow">Current Work</div>
+                <h2 class="section-headline">Ongoing Projects</h2>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">🔊 My Application Sound</h3>
+                    <p class="project-description">A revolutionary multimodal interface combining voice commands, gesture recognition, and clap detection for seamless user interaction.</p>
+                </div>
+                
+                <div class="project-card">
+                    <h3 class="project-title">🕶️ AI Smart Glasses</h3>
+                    <p class="project-description">Next-generation wearable technology with integrated camera, microphone, and audio systems powered by smartphone processing.</p>
+                </div>
+                
+                <div class="project-card">
+                    <h3 class="project-title">💻 Win_Assist</h3>
+                    <p class="project-description">Intelligent offline-first personal assistant for Windows with advanced automation and productivity enhancement capabilities.</p>
+                </div>
+                
+                <div class="project-card">
+                    <h3 class="project-title">🧞‍♂️ JARVIS AI</h3>
+                    <p class="project-description">Sophisticated AI assistant prototype with computer vision capabilities, inspired by the legendary Iron Man companion.</p>
                 </div>
             </div>
-        </nav>
-    
-        <div class="head">
-            <h1 class="h1"><b class="effect">Wel come!</b></h1>
-            <br>
-            <p class="p1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos maiores voluptatum nihil odio harum ea quibusdam recusandae, molestias eum dolorum ad consequuntur voluptas in, adipisci quia placeat? Voluptate, unde debitis?</p>
-            <br><br>
-            <p class="p1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio molestias atque odio, dignissimos impedit enim odit eius velit, commodi sapiente et ut saepe maxime explicabo deleniti nulla non? Iure, laborum!</p>
-            <br><br>
-            <p class="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum dicta tenetur qui, id perferendis labore saepe mollitia minus quaerat eum nesciunt iure, ipsa eveniet expedita voluptate dolores totam? Doloribus, dolore.</p>
         </div>
     </section>
-    <section class="intro-main">
-        <div class="i-option">
-            <p class="h-anime" style="margin-left: 200px;">INTRODUCE</p>
-            <p class="h-anime" style="margin-left: 100px;">DEVELOPERS</p>
-            <p class="h-anime" style="margin-left: 400px;">SUBSCRIBE +</p>
-            <p class="h-anime" style="margin-left: 200px;">PRODUCTS</p>
-            <p class="h-anime" >ABOUT US</p>
-            <p class="h-anime" style="margin-right: 100px;">CONTACT US</p>
-           
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="contact-headline fade-in">Let's Connect</h2>
+        <p class="contact-description fade-in">Whether you want to collaborate, share feedback, or discuss the future of technology — I'd love to hear from you.</p>
+        
+        <div class="contact-links fade-in">
+            <a href="mailto:yourname@email.com" class="contact-link">
+                <span>📧</span>
+                <span>Email</span>
+            </a>
+            <a href="#" class="contact-link">
+                <span>🐦</span>
+                <span>Twitter</span>
+            </a>
+            <a href="#" class="contact-link">
+                <span>💻</span>
+                <span>GitHub</span>
+            </a>
+            <a href="#" class="contact-link">
+                <span>💼</span>
+                <span>LinkedIn</span>
+            </a>
         </div>
-    <div class="intro">
-        <div class="autoshow">
-            <p class="p-l">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur aliquam fugiat exercitationem magni? Exercitationem possimus, itaque ducimus et nihil deleniti aut accusantium veniam facilis, fugit ad esse molestiae corrupti voluptas.</p>
-        </div>        
-        <div class="autoshow">
-            <p class="p-r">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio provident, et nostrum dolorem tenetur fuga, optio minima, incidunt beatae fugiat laudantium architecto labore! Deserunt dignissimos ad, ipsam dolorem consectetur fugit!</p>
-        </div>        
-        <div class="autoshow">
-            <p class="p-l">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum consectetur accusamus quidem molestiae dolorum odit, iste ipsa pariatur minima quod maxime aliquam obcaecati eius nostrum soluta. Reprehenderit pariatur alias repellendus?</p>
-        </div>        
-        <div class="autoshow">
-            <p class="p-r">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste expedita accusantium earum rem ad, id sit labore? Soluta aliquam, eaque repudiandae cumque minus reiciendis perspiciatis perferendis quaerat odio, dolore quam!</p>
-        </div>        
-        <div class="autoshow">
-            <p class="p-l">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, laborum. Exercitationem reprehenderit quam beatae? Blanditiis debitis inventore quo optio dolorem cumque nulla porro fugiat qui, eum consequatur, quasi temporibus quis!</p>
-        </div>        
-        <div class="autoshow">
-            <p class="p-r">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum architecto provident labore vitae sapiente, incidunt, consequatur ipsam totam autem consequuntur inventore. Vitae libero temporibus vero recusandae eius quasi doloremque optio!</p>
+        
+        <p class="quote">"The future belongs to those who build it. Let's create something extraordinary."</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Sudhanshu Jangid. Designed with passion for innovation.</p>
         </div>
-    </div>
-    </section>
-    <section class="about_dev">
-        <h1 class="glowing-header">Designed by Sudhans<span class="dot" id="dot1"></span><span class="dot" id="dot2"></span><span class="dot" id="dot3"></span></h1>
-    </section>
-    <section class="contact-section">
-        <h2>Contact Me</h2>
-        <ul class="contact-list">
-            <li><strong>Email:</strong> <a href="mailto:sudhanshujangid143@gmail.com">sudhanshujangid143@gmail.com</a></li>
-            <li><strong>Instagram:</strong> <a href="https://www.instagram.com/sudhanshujangid8482/profilecard/?igsh=MTB0M2swemJjeHF0Zg==" target="_blank">sudhanshujangid8482</a></li>
-            <li><strong>Twitter:</strong> <a href="https://twitter.com/yourusername" target="_blank">@yourusername</a></li>
-            <li><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></li>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.fade-in, .skill-card, .project-card, .quote').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Navigation scroll effect
+        let lastScrollY = window.scrollY;
+        
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
             
-            <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></li>
-            <li><strong>Mobile:</strong> <a href="tel:+919876543210">+91 7597068482</a></li>
-        </ul>
-    </section>
-    
-    
-    <script src="index.js"></script>
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.8)';
+            }
+            
+            lastScrollY = window.scrollY;
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 60;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
