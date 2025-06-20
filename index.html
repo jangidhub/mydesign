@@ -457,7 +457,7 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
-            animation-timeline: view(0% 90%);
+            animation-timeline: view(80% 30%);
         }
 
         @keyframes fadeInUp {
@@ -570,8 +570,8 @@
                     <a href="tel:+917597068482">+91 7597068482</a>
                 </div>
                 <div class="contact-item">
-                    <h3>📍 Visit Our Showroom</h3>
-                    <p>123 Design District<br>Furniture Avenue, IN</p>
+                    <h3>📍 Visit Our shop</h3>
+                    <p>9/1012 KBHB Jodhpur<br>Furniture Avenue, IN</p>
                 </div>
                 <div class="contact-item">
                     <h3>🕒 Business Hours</h3>
@@ -616,7 +616,7 @@
         // Smooth scrolling for navigation links
         document.querySelectorAll('.sidebar a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+                
                 const href = this.getAttribute('href');
                 if (href.startsWith('#')) {
                     const target = document.querySelector(href);
