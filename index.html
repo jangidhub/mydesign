@@ -3,80 +3,536 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
     <title>HOME</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
+        html {
+            scrollbar-width: none;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: #333;
+            background-color: #000;
+            color: antiquewhite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .b-container {
+            height: 100vh;
+            width: 100%;
+            background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            display: flex;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .nav_side_button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            border-radius: 50%;
+            transition: 0.5s;
+            border: 0px solid black;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            margin: auto;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar {
+            margin-top: 15px;
+            margin-left: 15px;
+            position: fixed;
+            top: 0;
+            width: 0px;
+            height: 50%;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: 0.5s;
+            border-radius: 50px;
+            padding-top: 60px;
+            z-index: 999;
+            box-shadow: 5px 5px 100px black;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar.active {
+            width: 250px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .sidebar a {
+            margin-top: 10px;
+            margin-left: 25%;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.5s;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            font-size: 22px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .head {
+            position: relative;
+            height: fit-content;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 8px 8px 10px rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+            margin: auto;
+            top: 20vh;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .h1 {
+            background-color: transparent;
+            display: inline;
+            position: relative;
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .p1 {
+            background-color: transparent;
+            display: block;
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .intro-main {
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+
+        .i-option {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .h-anime {
+            font-size: clamp(2rem, 8vw, 4rem);
+            margin: 20px 0;
+            animation: autoblur;
+            animation-timeline: view();
+        }
+
+        @keyframes autoblur {
+            0% {
+                filter: blur(40px);
+            }
+            50%, 51% {
+                filter: blur(0px);
+            }
+            100% {
+                filter: blur(40px);
+            }
+        }
+
+        .intro {
+            display: block;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 25px 20px;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .p-l, .p-r {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .autoshow {
+            animation: autoshowanimation both;
+            animation-timeline: view(70% 5%);
+        }
+
+        @keyframes autoshowanimation {
+            from {
+                opacity: 0;
+                transform: translateY(200px) scale(0.3);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        #effectMouse {
+            position: fixed;
+            top: -20px;
+            left: -20px;
+            background-color: #222;
+            backdrop-filter: blur(10px);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            opacity: 0.5;
+            transform: translateX(0) translateY(0) scale(0);
+            transition: transform 0.2s;
+            z-index: 1111111;
+            pointer-events: none;
+            box-shadow: 8px 8px 10px rgba(0,0,0,0.8);
+        }
+
+        #effecMouse {
+            position: fixed;
+            top: -20px;
+            left: -20px;
+            background-color: #999;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            opacity: 0.5;
+            transform: translateX(0) translateY(0) scale(0);
+            transition: transform 0.2s;
+            z-index: 1111111;
+            pointer-events: none;
+            box-shadow: 8px 8px 10px rgba(0,0,0,0.8);
+        }
+
+        .about_dev {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .glowing-header {
+            position: relative;
+            font-size: clamp(1.5rem, 6vw, 3rem);
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+        }
+
+        .dot {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+            transition: transform 1s ease-in-out;
+        }
+
+        #dot1 {
+            background: rgba(0, 255, 255, 0.8);
+        }
+
+        #dot2 {
+            background: rgba(255, 0, 255, 0.8);
+        }
+
+        #dot3 {
+            background: rgba(255, 255, 0, 0.8);
+        }
+
+        .contact-section {
+            padding: 30px 20px;
+            text-align: center;
+            background: #f8f4e3;
+            color: #333;
+            border: 1px solid #d4af37;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .contact-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 20px;
+            color: #000;
+            border-bottom: 2px solid #d4af37;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .contact-list li {
+            margin: 15px 0;
+            word-break: break-all;
+        }
+
+        .contact-list a {
+            color: #4169e1;
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .contact-list a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .contact-list a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Specific Styles */
+        @media (max-width: 768px) {
+            .nav_side_button {
+                top: 15px;
+                left: 15px;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .sidebar {
+                margin-top: 10px;
+                margin-left: 10px;
+                height: 60%;
+                border-radius: 20px;
+                padding-top: 50px;
+            }
+
+            .sidebar.active {
+                width: 200px;
+            }
+
+            .sidebar a {
+                margin-left: 15%;
+                font-size: 16px;
+                padding: 8px 12px;
+            }
+
+            .sidebar a:hover {
+                font-size: 18px;
+            }
+
+            .head {
+                top: 15vh;
+                padding: 20px;
+                border-radius: 15px;
+            }
+
+            .h-anime {
+                margin: 10px 0;
+            }
+
+            .intro {
+                padding: 20px 15px;
+                border-radius: 15px;
+            }
+
+            .p-l, .p-r {
+                padding: 0 10px;
+                margin: 15px auto;
+            }
+
+            .about_dev {
+                padding: 15px;
+            }
+
+            .glowing-header {
+                letter-spacing: 1px;
+                padding: 10px 15px;
+            }
+
+            .contact-section {
+                margin: 15px 10px;
+                padding: 20px 15px;
+            }
+
+            .contact-list li {
+                margin: 10px 0;
+            }
+
+            /* Hide mouse effects on mobile */
+            #effectMouse,
+            #effecMouse {
+                display: none;
+            }
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .head {
+                max-width: 80%;
+            }
+
+            .sidebar.active {
+                width: 220px;
+            }
+
+            .p-l, .p-r {
+                max-width: 500px;
+            }
+        }
+
+        /* Large Desktop Styles */
+        @media (min-width: 1200px) {
+            .head {
+                max-width: 70%;
+            }
+
+            .intro {
+                max-width: 1000px;
+            }
+
+            .p-l {
+                text-align: left;
+                margin-left: 0;
+            }
+
+            .p-r {
+                text-align: right;
+                margin-left: auto;
+                margin-right: 0;
+            }
+        }
+
+        /* Hamburger menu for mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
 </head>
 <body>
-
     <div id="effectMouse"></div>
     <div id="effecMouse"></div>
 
     <section class="b-container">
         <nav class="header">
-        
             <div id="container">
-                <a class="nav_side_button" id="Toggle" ><img class="logo" src="images/pngwing.com ship while.png"></a>
-                <!--  sidebar ancher tags -->
+                <a class="nav_side_button" id="Toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
                 <div class="sidebar" id="sidebar">
                     <a href="#" id="a1">HOME</a>
                     <a href="#" >PRODUCT</a>
                     <a href="#" id="a2">SERVICE</a>
                     <a href="#" id="a3">ABOUT</a>
-                    
                 </div>
             </div>
         </nav>
     
         <div class="head">
-            <h1 class="h1"><b class="effect">Wel come!</b></h1>
-            <br>
+            <h1 class="h1"><b class="effect">Welcome!</b></h1>
             <p class="p1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos maiores voluptatum nihil odio harum ea quibusdam recusandae, molestias eum dolorum ad consequuntur voluptas in, adipisci quia placeat? Voluptate, unde debitis?</p>
-            <br><br>
             <p class="p1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio molestias atque odio, dignissimos impedit enim odit eius velit, commodi sapiente et ut saepe maxime explicabo deleniti nulla non? Iure, laborum!</p>
-            <br><br>
             <p class="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum dicta tenetur qui, id perferendis labore saepe mollitia minus quaerat eum nesciunt iure, ipsa eveniet expedita voluptate dolores totam? Doloribus, dolore.</p>
         </div>
     </section>
+
     <section class="intro-main">
         <div class="i-option">
-            <p class="h-anime" style="margin-left: 200px;">INTRODUCE</p>
-            <p class="h-anime" style="margin-left: 100px;">DEVELOPERS</p>
-            <p class="h-anime" style="margin-left: 400px;">SUBSCRIBE +</p>
-            <p class="h-anime" style="margin-left: 200px;">PRODUCTS</p>
-            <p class="h-anime" >ABOUT US</p>
-            <p class="h-anime" style="margin-right: 100px;">CONTACT US</p>
-           
+            <p class="h-anime">INTRODUCE</p>
+            <p class="h-anime">DEVELOPERS</p>
+            <p class="h-anime">SUBSCRIBE +</p>
+            <p class="h-anime">PRODUCTS</p>
+            <p class="h-anime">ABOUT US</p>
+            <p class="h-anime">CONTACT US</p>
         </div>
-    <div class="intro">
-        <div class="autoshow">
-            <p class="p-l">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur aliquam fugiat exercitationem magni? Exercitationem possimus, itaque ducimus et nihil deleniti aut accusantium veniam facilis, fugit ad esse molestiae corrupti voluptas.</p>
-        </div>        
-        <div class="autoshow">
-            <p class="p-r">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio provident, et nostrum dolorem tenetur fuga, optio minima, incidunt beatae fugiat laudantium architecto labore! Deserunt dignissimos ad, ipsam dolorem consectetur fugit!</p>
-        </div>        
-        <div class="autoshow">
-            <p class="p-l">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum consectetur accusamus quidem molestiae dolorum odit, iste ipsa pariatur minima quod maxime aliquam obcaecati eius nostrum soluta. Reprehenderit pariatur alias repellendus?</p>
-        </div>        
-        <div class="autoshow">
-            <p class="p-r">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste expedita accusantium earum rem ad, id sit labore? Soluta aliquam, eaque repudiandae cumque minus reiciendis perspiciatis perferendis quaerat odio, dolore quam!</p>
-        </div>        
-        <div class="autoshow">
-            <p class="p-l">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, laborum. Exercitationem reprehenderit quam beatae? Blanditiis debitis inventore quo optio dolorem cumque nulla porro fugiat qui, eum consequatur, quasi temporibus quis!</p>
-        </div>        
-        <div class="autoshow">
-            <p class="p-r">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum architecto provident labore vitae sapiente, incidunt, consequatur ipsam totam autem consequuntur inventore. Vitae libero temporibus vero recusandae eius quasi doloremque optio!</p>
+        
+        <div class="intro">
+            <div class="autoshow">
+                <p class="p-l">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur aliquam fugiat exercitationem magni? Exercitationem possimus, itaque ducimus et nihil deleniti aut accusantium veniam facilis, fugit ad esse molestiae corrupti voluptas.</p>
+            </div>        
+            <div class="autoshow">
+                <p class="p-r">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio provident, et nostrum dolorem tenetur fuga, optio minima, incidunt beatae fugiat laudantium architecto labore! Deserunt dignissimos ad, ipsam dolorem consectetur fugit!</p>
+            </div>        
+            <div class="autoshow">
+                <p class="p-l">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum consectetur accusamus quidem molestiae dolorum odit, iste ipsa pariatur minima quod maxime aliquam obcaecati eius nostrum soluta. Reprehenderit pariatur alias repellendus?</p>
+            </div>        
+            <div class="autoshow">
+                <p class="p-r">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste expedita accusantium earum rem ad, id sit labore? Soluta aliquam, eaque repudiandae cumque minus reiciendis perspiciatis perferendis quaerat odio, dolore quam!</p>
+            </div>        
+            <div class="autoshow">
+                <p class="p-l">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, laborum. Exercitationem reprehenderit quam beatae? Blanditiis debitis inventore quo optio dolorem cumque nulla porro fugiat qui, eum consequatur, quasi temporibus quis!</p>
+            </div>        
+            <div class="autoshow">
+                <p class="p-r">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum architecto provident labore vitae sapiente, incidunt, consequatur ipsam totam autem consequuntur inventore. Vitae libero temporibus vero recusandae eius quasi doloremque optio!</p>
+            </div>
         </div>
-    </div>
     </section>
+
     <section class="about_dev">
         <h1 class="glowing-header">Designed by Sudhans<span class="dot" id="dot1"></span><span class="dot" id="dot2"></span><span class="dot" id="dot3"></span></h1>
     </section>
+
     <section class="contact-section">
         <h2>Contact Me</h2>
         <ul class="contact-list">
@@ -84,13 +540,123 @@
             <li><strong>Instagram:</strong> <a href="https://www.instagram.com/sudhanshujangid8482/profilecard/?igsh=MTB0M2swemJjeHF0Zg==" target="_blank">sudhanshujangid8482</a></li>
             <li><strong>Twitter:</strong> <a href="https://twitter.com/yourusername" target="_blank">@yourusername</a></li>
             <li><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></li>
-            
             <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></li>
-            <li><strong>Mobile:</strong> <a href="tel:+919876543210">+91 7597068482</a></li>
+            <li><strong>Mobile:</strong> <a href="tel:+917597068482">+91 7597068482</a></li>
         </ul>
     </section>
     
-    
-    <script src="index.js"></script>
+    <script>
+        // Navigation Toggle
+        const nav_toggle = document.getElementById("Toggle");
+        const sidebar = document.getElementById("sidebar");
+        
+        nav_toggle.onclick = function(){
+            sidebar.classList.toggle("active");
+        }
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!sidebar.contains(event.target) && !nav_toggle.contains(event.target)) {
+                sidebar.classList.remove("active");
+            }
+        });
+
+        // Mouse Effects (only on desktop)
+        if (window.innerWidth > 768) {
+            let body = document.querySelector('body');
+            let mouse = document.getElementById('effectMouse');
+            let mouse2 = document.getElementById('effecMouse');
+            
+            body.addEventListener('mousemove', (e) => {
+                let scale = 1;
+                let scale2 = 1;
+                if(e.target.classList.contains('effect')){
+                    scale = 3;
+                    scale2 = 2;
+                }
+                mouse.style.transform = `
+                    translateX(${e.clientX}px)
+                    translateY(${e.clientY}px)
+                    scale(${scale})
+                `;
+                mouse2.style.transform = `
+                    translateX(${e.clientX}px)
+                    translateY(${e.clientY}px)
+                    scale(${scale2})
+                `;
+            });
+            
+            body.addEventListener('mouseout', (e) => {
+                mouse.style.transform = `
+                    translateX(${e.clientX}px)
+                    translateY(${e.clientY}px)
+                    scale(0)
+                `;
+                mouse2.style.transform = `
+                    translateX(${e.clientX}px)
+                    translateY(${e.clientY}px)
+                    scale(0)
+                `;
+            });
+        }
+
+        // Animated Dots
+        document.addEventListener("DOMContentLoaded", () => {
+            const dots = [
+                document.getElementById("dot1"),
+                document.getElementById("dot2"),
+                document.getElementById("dot3"),
+            ];
+            
+            const generateRandomPosition = (element) => {
+                const parent = element.parentElement;
+                const rect = parent.getBoundingClientRect();
+                const x = Math.random() * rect.width - rect.width / 2;
+                const y = Math.random() * rect.height - rect.height / 2;
+                return { x, y };
+            };
+            
+            const moveDots = () => {
+                dots.forEach((dot) => {
+                    const { x, y } = generateRandomPosition(dot);
+                    dot.style.transform = `translate(${x}px, ${y}px)`;
+                });
+            };
+            
+            setInterval(moveDots, 1000);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                sidebar.classList.remove("active");
+            });
+        });
+
+        // Add touch support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // Swipe left - close sidebar
+                sidebar.classList.remove("active");
+            }
+            if (touchEndX > touchStartX + 50 && touchStartX < 50) {
+                // Swipe right from left edge - open sidebar
+                sidebar.classList.add("active");
+            }
+        }
+    </script>
 </body>
 </html>
