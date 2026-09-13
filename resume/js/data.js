@@ -1,85 +1,88 @@
 /**
  * Site content.
- * Edit this file to update projects, skills, links, etc. — no HTML/CSS
- * knowledge required for most changes.
- *
- * TODO markers show where you should replace placeholder info with the
- * real thing (links, screenshots, exact dates).
+ * Synchronized with Sudhanshu Jangid's official Resume.
  */
 
 const SITE = {
   name: "Sudhanshu Jangid",
-  role: "Software Developer",
+  role: "Python Developer Intern | React Native Mobile Developer Intern",
   location: "Jodhpur, Rajasthan, India",
-  email: "sudhanshujangid143@zohomail.in",
+  email: "sudhanshujagnid143@gmail.com",
+  phone: "+91 7597068482",
   github: "https://github.com/jangidhub/",
   linkedin: "https://www.linkedin.com/in/sudhanshu-jangid03",
   twitter: "https://x.com/Sudhans0841",
-  // Relative path to resume inside the resume subfolder
+  portfolio: "https://jangidhub.github.io/mydesign/resume/",
   resumeUrl: "resume.pdf",
 };
 
 const PROJECTS = [
   {
-    name: "Inspection Management System",
-    status: null, // e.g. "MVP" / "In Development" — set if this isn't a finished build
+    name: "MotionCTRL — Hand Gesture PC Controller",
+    status: "Completed",
     description:
-      "A web application built to digitize inspection workflows and reduce dependence on paper-based processes.",
+      "A computer-vision application for controlling PC interactions and mouse movements touchlessly using natural hand gestures captured through a standard laptop webcam.",
     features: [
-      "Authentication",
-      "Inspection forms",
-      "Database-driven records",
-      "Report generation",
-      "Responsive interface",
+      "Real-time hand landmark detection using MediaPipe",
+      "OpenCV for camera feed capture and image processing",
+      "Gesture-based mouse control and interaction logic",
+      "One Euro Filter for reducing cursor jitter and improving responsiveness",
     ],
-    tech: ["Python", "Django", "Database", "HTML/CSS/JavaScript"],
-    role: "Designed and built the application end to end.",
-    // TODO: add the real GitHub repo and live demo URLs (or remove the keys if not public).
-    github: null,
+    tech: ["Python", "OpenCV", "MediaPipe", "PyAutoGUI"],
+    role: "Developer",
+    github: "https://github.com/jangidhub",
     demo: null,
-    pattern: "grid",
+    pattern: "dots",
   },
   {
-    name: "My Application Sound",
-    status: "Experimental",
+    name: "Task / Todo List Mobile App",
+    status: "Completed",
     description:
-      "A multimodal interaction prototype exploring voice commands, hand-gesture recognition and clap detection as alternative input methods.",
-    features: ["Voice command handling", "Gesture recognition", "Clap-based triggers"],
-    tech: ["Python"], // TODO: list the actual libraries used (e.g. MediaPipe, SpeechRecognition, etc.)
-    role: "Sole developer.",
-    github: null, // TODO
-    demo: null,
-    pattern: "waves",
-  },
-  {
-    name: "Win_Assist",
-    status: "In Development",
-    description:
-      "An offline-first personal assistant for Windows, aimed at automating repetitive tasks and everyday productivity steps.",
-    features: ["Offline operation", "Task automation"], // TODO: confirm/expand the actual feature set
-    tech: ["Python"], // TODO: add the real stack
-    role: "Sole developer.",
-    github: null, // TODO
+      "A cross-platform mobile task-management application built using React Native and Expo to help users organize daily workflows and track productivity.",
+    features: [
+      "Task creation and task completion functionality",
+      "Interactive marking and status toggling for tasks",
+      "Intuitive, clean interface designed for daily task tracking",
+      "Mobile state management and responsive UI layout",
+    ],
+    tech: ["React Native", "Expo", "JavaScript"],
+    role: "Mobile Developer",
+    github: "https://github.com/jangidhub",
     demo: null,
     pattern: "lines",
   },
   {
-    name: "HandPilot — Gesture-Based PC Controller",
-    status: "Completed / Research Project",
+    name: "Personal Portfolio Website",
+    status: "Live",
     description:
-      "An AI-powered, real-time hand gesture controller system enabling touchless human-computer interaction using a standard webcam. Translates hand movements into high-precision cursor navigation, clicks, drag-and-drop, scrolling, zoom, and system actions.",
+      "Designed and developed a personal portfolio website to showcase technical projects, computer vision demos, and development skills.",
     features: [
-      "Real-time hand tracking (MediaPipe CNN)",
-      "One Euro Filter (adaptive jitter removal)",
-      "Click-Freezing & Thumb-Tilt joystick",
-      "Native macOS Quartz & OS event injection",
-      "PySide6 (Qt) desktop GUI with live HUD",
+      "Responsive web pages built with modern HTML, CSS, and JavaScript",
+      "Interactive Three.js hero scene and custom cursor interactions",
+      "Version control using Git and GitHub repository management",
+      "Automated continuous deployment via GitHub Pages",
     ],
-    tech: ["Python", "OpenCV", "MediaPipe", "PySide6 (Qt)", "macOS Quartz"],
-    role: "Team Lead & Developer.",
+    tech: ["HTML", "CSS", "JavaScript", "Git", "GitHub Pages"],
+    role: "Frontend Developer",
+    github: "https://github.com/jangidhub/mydesign",
+    demo: "https://jangidhub.github.io/mydesign/resume/",
+    pattern: "grid",
+  },
+  {
+    name: "Inspection Management System",
+    status: "In Development",
+    description:
+      "A web application built to digitize inspection workflows, manage records, and eliminate paper-based processes for businesses.",
+    features: [
+      "User authentication and structured inspection forms",
+      "Database-driven record tracking and validation",
+      "Report generation and responsive web interface",
+    ],
+    tech: ["Python", "Django (Basic)", "PostgreSQL (Basic)", "JavaScript"],
+    role: "Full-Stack Developer",
     github: null,
     demo: null,
-    pattern: "dots",
+    pattern: "waves",
   },
 ];
 
@@ -93,45 +96,65 @@ const CURRENTLY_BUILDING = {
 
 const CAPABILITIES = [
   {
-    title: "Web Applications",
-    description: "Authentication, dashboards, forms, databases, APIs and business workflows.",
+    title: "Python & Backend Development",
+    description: "Hands-on experience with Python programming, OpenCV/MediaPipe automation, basic Django web apps, REST API fundamentals, and PostgreSQL.",
   },
   {
-    title: "Business Websites",
-    description: "Responsive websites and landing pages for businesses and professionals.",
+    title: "React Native Mobile Development",
+    description: "Building functional, interactive cross-platform mobile applications using React Native, Expo, and modern JavaScript.",
   },
   {
-    title: "Digital Products",
-    description: "Small SaaS products, client portals and digital tools.",
+    title: "Computer Vision & Touchless HCI",
+    description: "Developing webcam-driven hand-tracking systems, MediaPipe deep-learning pipelines, OpenCV image processing, and low-latency cursor dispatch.",
   },
   {
-    title: "Automation",
-    description: "Software that reduces repetitive manual processes.",
+    title: "Web Technologies & Deployment",
+    description: "Crafting clean, responsive web applications using HTML, CSS, JavaScript, with Git/GitHub version control and GitHub Pages deployment.",
   },
 ];
 
 const SKILLS = [
-  { group: "Languages", items: ["Python", "JavaScript", "HTML", "CSS", "SQL"] },
-  { group: "Frameworks", items: ["Django", "React", "Next.js"] },
-  { group: "Database", items: ["MySQL", "PostgreSQL", "Supabase"] },
-  { group: "Tools", items: ["Git", "GitHub", "Linux", "VS Code"] },
+  {
+    group: "Programming Languages",
+    items: ["Python", "JavaScript", "TypeScript (Basic)", "SQL", "Java (Basic)", "C (Basic)", "C++ (Basic)"],
+  },
+  {
+    group: "Backend & Database",
+    items: ["Django (Basic)", "PostgreSQL (Basic)", "REST API Fundamentals"],
+  },
+  {
+    group: "Libraries & Frameworks",
+    items: ["OpenCV", "MediaPipe", "PyAutoGUI", "React Native", "Expo", "React (Basic)"],
+  },
+  {
+    group: "Web Development",
+    items: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    group: "Tools & Platforms",
+    items: ["Git", "GitHub", "VS Code", "Linux", "GitHub Pages"],
+  },
+  {
+    group: "Computer Science & Strengths",
+    items: ["Object-Oriented Programming", "Basic Data Structures & Algorithms", "Problem Solving", "Debugging & Troubleshooting", "Team Collaboration"],
+  },
 ];
 
 const EDUCATION = [
   {
     period: "2023 – 2026",
     title: "Bachelor of Computer Applications (BCA)",
-    org: "G.D. Memorial College (Affiliated to JNVU, Jodhpur)",
-    description: "",
+    org: "Jai Narain Vyas University, Jodhpur",
+    description: "CGPA: 6.98 / 10 · Coursework: Python Programming, Database Management Systems, Operating Systems, Computer Networks, Data Science, Cyber Security, Internet of Things.",
   },
 ];
 
 const EXPERIENCE = [
   {
-    period: "Ongoing",
-    title: "Independent Developer",
-    org: "Self-directed",
+    period: "Available for Internships",
+    title: "Python & React Native Developer",
+    org: "Independent Projects",
     description:
-      "Building applications independently — full-stack development, MVPs and product experiments, working end to end from database and backend architecture through to a usable, deployed interface.",
+      "Built practical software spanning computer vision gesture controllers, React Native mobile apps, and database-driven web tools. Seeking an internship to apply programming and problem-solving skills while gaining production software experience.",
   },
 ];
