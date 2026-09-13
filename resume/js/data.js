@@ -15,8 +15,8 @@ const SITE = {
   github: "https://github.com/jangidhub/",
   linkedin: "https://www.linkedin.com/in/sudhanshu-jangid03",
   twitter: "https://x.com/Sudhans0841",
-  // TODO: confirm this is still the right resume file name/path once you add the PDF.
-  resumeUrl: "/resume.pdf",
+  // Relative path to resume inside the resume subfolder
+  resumeUrl: "resume.pdf",
 };
 
 const PROJECTS = [
@@ -64,14 +64,20 @@ const PROJECTS = [
     pattern: "lines",
   },
   {
-    name: "JARVIS AI",
-    status: "Experimental",
+    name: "HandPilot — Gesture-Based PC Controller",
+    status: "Completed / Research Project",
     description:
-      "An AI assistant prototype exploring computer-vision-based interaction, inspired by conversational assistant interfaces.",
-    features: ["Computer vision experiments", "Assistant-style interaction"], // TODO: confirm actual scope
-    tech: ["Python"], // TODO: add the real stack
-    role: "Sole developer.",
-    github: null, // TODO
+      "An AI-powered, real-time hand gesture controller system enabling touchless human-computer interaction using a standard webcam. Translates hand movements into high-precision cursor navigation, clicks, drag-and-drop, scrolling, zoom, and system actions.",
+    features: [
+      "Real-time hand tracking (MediaPipe CNN)",
+      "One Euro Filter (adaptive jitter removal)",
+      "Click-Freezing & Thumb-Tilt joystick",
+      "Native macOS Quartz & OS event injection",
+      "PySide6 (Qt) desktop GUI with live HUD",
+    ],
+    tech: ["Python", "OpenCV", "MediaPipe", "PySide6 (Qt)", "macOS Quartz"],
+    role: "Team Lead & Developer.",
+    github: null,
     demo: null,
     pattern: "dots",
   },
@@ -113,9 +119,9 @@ const SKILLS = [
 
 const EDUCATION = [
   {
-    period: "", // TODO: add the years you attended, if you'd like them shown
+    period: "2023 – 2026",
     title: "Bachelor of Computer Applications (BCA)",
-    org: "GD Memorial College",
+    org: "G.D. Memorial College (Affiliated to JNVU, Jodhpur)",
     description: "",
   },
 ];
